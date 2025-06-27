@@ -1,4 +1,6 @@
-<h1 align="center">E-Commerce Store 🛒</h1>
+<h1 align="center">ShopSpree 🛒</h1>
+
+<p align="center">Made exclusively by Shahir Ali</p>
 
 ![Demo App](/frontend/public/screenshot-for-readme.png)
 

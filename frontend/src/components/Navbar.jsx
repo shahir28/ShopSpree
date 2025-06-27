@@ -13,7 +13,7 @@ const Navbar = () => {
 			<div className='container mx-auto px-4 py-3'>
 				<div className='flex flex-wrap justify-between items-center'>
 					<Link to='/' className='text-2xl font-bold text-emerald-400 items-center space-x-2 flex'>
-						E-Commerce
+						ShopSpree
 					</Link>
 
 					<nav className='flex flex-wrap items-center gap-4'>
@@ -23,6 +23,12 @@ const Navbar = () => {
 					 ease-in-out'
 						>
 							Home
+						</Link>
+						<Link
+							to="/contact"
+							className="text-gray-300 hover:text-emerald-400 transition duration-300 ease-in-out"
+						>
+							Contact Us
 						</Link>
 						{user && (
 							<Link

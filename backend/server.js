@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import path from "path";
+import cors from "cors";
 
 import authRoutes from "./routes/auth.route.js";
 import productRoutes from "./routes/product.route.js";
@@ -19,6 +20,7 @@ const PORT = process.env.PORT || 5000;
 
 const __dirname = path.resolve();
 
+app.use(cors({ origin: process.env.CLIENT_URL, credentials: true })); // Enable CORS
 app.use(express.json({ limit: "10mb" })); // allows you to parse the body of the request
 app.use(cookieParser());
 
@@ -37,7 +39,18 @@ if (process.env.NODE_ENV === "production") {
 	});
 }
 
+// Handle unhandled routes
+app.use((req, res, next) => {
+	res.status(404).json({ message: "Route not found" });
+});
+
+// Global error handler
+app.use((err, req, res, next) => {
+	console.error(err.stack);
+	res.status(500).json({ message: "Internal server error" });
+});
+
 app.listen(PORT, () => {
-	console.log("Server is running on http://localhost:" + PORT);
+	console.log("ShopSpree is running on http://localhost:" + PORT);
 	connectDB();
 });
